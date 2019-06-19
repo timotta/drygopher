@@ -11,7 +11,7 @@ prebuild:
 build:
 	@echo Updating dependencies...
 	@dep ensure
-	@cd drygopher && go install 
+	@cd drygopher && CGO_ENABLED=0 GOARCH=amd64 go build -a -tags netgo -ldflags '-w -s' -o ../bin/drygopher main.go
 .PHONY: build
 
 test:
